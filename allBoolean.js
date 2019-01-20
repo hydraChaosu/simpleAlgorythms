@@ -7,3 +7,5 @@ allBool(["a", "b", "c"]);
 
 // !item zwróci same false właściwości
 // !! zwraca same true
+
+//mozna daz  filter samo Boolean
