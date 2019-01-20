@@ -7,8 +7,3 @@ stringEndsWith("Catapult", "t");
 stringEndsWith("Catapult", "ul");
 
 // .endsWith()
-
-let a = str
-  .toLowerCase()
-  .split(" ")
-  .map(word => word.splice(0, 1, word[0].toUpperString()));
