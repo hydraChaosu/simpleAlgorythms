@@ -57,13 +57,16 @@ const newMaxPrimeList2 = number => {
       }
     }
     // console.log(tempListPrimes.length);
-    if (tempListPrimes.every(number => number !== 1)) {
+    if (tempListPrimes[tempListPrimes.length - 1] !== 1) {
       PrimesList.push(i);
     }
+    // if (tempListPrimes.every(number => number !== 1)) {
+    //   PrimesList.push(i);
+    // }
   }
   return PrimesList;
 };
 
-console.log(newMaxPrimeList2(100));
+console.log(newMaxPrimeList2(10));
 // console.log(newMaxPrimeList2(100).length); //
 // console.log(newMaxPrimeList(100).length); //
