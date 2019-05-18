@@ -5,44 +5,52 @@ function smallestCommons(arr) {
     (item, index) => minNumber + index
   );
   const primesArr = primes(maxNumber);
-  //generate object with divisions of every number
   let numbers = {};
-  for (let numberFromArray of array) {
+  for (
+    let numberFromArray = 0;
+    numberFromArray < array.length;
+    numberFromArray++
+  ) {
     let dividedBy = [];
-    let myNumber = numberFromArray;
+    let myNumber = array[numberFromArray];
+    // console.log(array[numberFromArray])
 
     while (myNumber !== 0) {
+      // console.log(myNumber,)
       if (myNumber === 1) break;
-      for (let num of primesArr) {
-        if (myNumber % num === 0) {
-          myNumber = myNumber / num;
-          dividedBy.push(num);
+      for (let i = 0; i < primesArr.length; i++) {
+        if (myNumber % primesArr[i] === 0) {
+          myNumber = myNumber / primesArr[i];
+          dividedBy.push(primesArr[i]);
           break;
         }
       }
     }
-    numbers[numberFromArray] = dividedBy;
+    numbers[array[numberFromArray]] = dividedBy;
+    // console.log(dividedBy)
   }
-  //create empty obj which includes every valuable prime
+  // console.log(JSON.stringify(numbers, null, 4))
   let result = {};
   for (const prime of primesArr) {
     result[prime] = 0;
+    // console.log(prime)
   }
 
-  for (let num in numbers) {
-    // creaty obj which describes how many times a number is divided by prime
+  for (let [num, numDiv] of Object.entries(numbers)) {
+    // console.log('liczba',num,'dzileniki', numbeRDiv)
     let temp = {};
-    for (let divider of numbers[num]) {
+    for (let divider of numDiv) {
       if (temp.hasOwnProperty(divider)) {
         temp[divider]++;
       } else {
         temp[divider] = 1;
       }
     }
-    //if current number is divided more time by prime than current status in object (from previous numbers) replace status with him
-    for (let num in temp) {
-      if (result[num] < temp[num]) {
-        result[num] = temp[num];
+    for (let [Tnum, TDiv] of Object.entries(temp)) {
+      // console.log('liczba',Tnum,'dzileniki', TDiv)
+      // console.log(result[Tnum] < TDiv)
+      if (result[Tnum] < TDiv) {
+        result[Tnum] = TDiv;
       }
     }
   }
